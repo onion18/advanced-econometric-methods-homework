@@ -1,0 +1,43 @@
+---
+title: "Advanced Econometric Methods:sample"
+author: ""
+date: today
+format:
+  pdf:
+    number-sections: false
+header-includes:
+  - '\AtBeginDocument{\author{Student ID: Your Student ID\\Your Name}}'
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+# Setup: load packages and define any common options here.
+```
+
+# [Question number and short title]
+
+Answer the question directly. Show the requested code-generated table, figure, or numerical result.
+
+```{r}
+# Code required for this question
+# For a ggplot figure, use labs() to provide reader-friendly labels:
+# + labs(title = "...", x = "Years of education", y = "Hourly wage (US dollars)")
+```
+
+Brief interpretation: Explain the direction, magnitude, and substantive meaning of the result.
+
+# [Next question number and short title]
+
+```{r}
+# Code required for this question
+```
+
+Brief interpretation: ...
+
+<!-- Copy the question block above as many times as needed. Match the numbering
+and order used in the current assignment. Use descriptive table and figure
+titles, variable labels, axis labels, units, legends, captions, and notes. -->

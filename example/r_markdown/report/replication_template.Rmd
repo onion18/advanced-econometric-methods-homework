@@ -1,0 +1,105 @@
+---
+title: "Advanced Econometric Methods:sample"
+author: ""
+date: ""
+output:
+  pdf_document:
+    latex_engine: pdflatex
+header-includes:
+  - '\usepackage{float}'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+find_project_root <- function() {
+  starts <- getwd()
+  input_path <- knitr::current_input()
+  if (is.character(input_path) && nzchar(input_path)) {
+    input_dir <- dirname(normalizePath(input_path, mustWork = FALSE))
+    if (!is.na(input_dir) && nzchar(input_dir)) starts <- c(input_dir, starts)
+  }
+  for (start in unique(starts)) {
+    dir <- normalizePath(start, mustWork = FALSE)
+    for (i in 1:3) {
+      if (file.exists(file.path(dir, "code", "analysis_helpers.R"))) return(dir)
+      parent <- dirname(dir)
+      if (identical(parent, dir)) break
+      dir <- parent
+    }
+  }
+  stop("Set the working directory to the project folder that contains code/ and data/.")
+}
+project_root <- find_project_root()
+old_wd <- getwd()
+setwd(project_root)
+source(file.path(project_root, "code", "analysis_helpers.R"))
+setwd(old_wd)
+```
+
+Student ID: Your Student ID  
+Your Name
+
+
+# Question 1
+
+## 1.1 Scatter plot
+
+Figure 1 shows a positive association in simulated data. The line is the least-squares fit.
+
+```{r fig-scatter, fig.cap="Simulated outcome (Y) and predictor (X), with a least-squares fit."}
+plot_scatter()
+```
+
+## 1.2 Event-study
+
+The event-study simulation assigns treatment to 60 of 120 units. Outcomes include unit and time effects, a rising treatment effect after period 0, and random noise. Period -1 is the reference period. Figure 2 plots the estimated two-way fixed-effects coefficients and 95% confidence intervals; estimates before treatment should be near zero in this simulation.
+
+$$
+Y_{it} = \alpha_i + \lambda_t + \sum_{k \neq -1} \tau_k D_i \mathbb{1}\{t = k\} + \varepsilon_{it}.
+$$
+
+```{r fig-event-study, fig.cap="Event-study estimates from the simulated panel; bars show 95% confidence intervals."}
+plot_event_study()
+```
+
+# Question 2
+
+## 2.1 Penguin figure
+
+Figure 3 uses the Palmer Penguins data. The panels show bill length by flipper length for each sex, body mass by flipper length, and the flipper-length distributions by species. Records with missing sex or plotted measurements are omitted.
+
+```{r fig-penguins, fig.cap="Penguin measurements by sex and species. Source: Horst, Hill, and Gorman (2020).", fig.pos="H"}
+plot_penguins()
+```
+
+\clearpage
+
+## 2.2 Table
+
+Table 1 reports mean bill length, bill depth, flipper length, and body mass by species and sex. Records with missing sex are omitted; each mean uses the available observations for that measurement.
+
+```{r}
+knitr::kable(
+  transform(penguin_summary, sex = tools::toTitleCase(as.character(sex))),
+  digits = 1,
+  col.names = c("Species", "Sex", "Bill length (mm)", "Bill depth (mm)",
+                "Flipper length (mm)", "Body mass (g)"),
+  caption = "Penguin summary statistics by species and sex."
+)
+```
+
+## 2.3 Regression
+
+We estimate an OLS model of bill length on species, sex, and flipper length. The coefficients are conditional associations, not causal effects. Adelie and female penguins are the reference categories.
+
+$$
+\text{Bill length}_i = \beta_0 + \beta_1 \mathbb{1}\{\text{Chinstrap}_i\} + \beta_2 \mathbb{1}\{\text{Gentoo}_i\} + \beta_3 \mathbb{1}\{\text{Male}_i\} + \beta_4 \text{Flipper length}_i + \varepsilon_i.
+$$
+
+```{r tbl-penguin-regression, results='asis'}
+penguin_regression_table(output = "markdown")
+```
+
+The table reports conventional OLS standard errors in parentheses, the outcome mean, sample size, and R-squared. The sample contains complete cases for the variables in the regression.
+
+Horst, A. M., Hill, A. P., & Gorman, K. B. (2020). *palmerpenguins: Palmer Archipelago (Antarctica) penguin data* (R package version 0.1.0) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.3960218

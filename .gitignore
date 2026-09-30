@@ -1,0 +1,14 @@
+.Rhistory
+.RData
+.Rproj.user/
+
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+example/r_quarto/report/replication_template.tex
+example/r_quarto/report/replication_template_files/

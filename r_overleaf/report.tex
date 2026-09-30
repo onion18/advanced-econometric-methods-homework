@@ -1,0 +1,43 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{float}
+
+\title{Advanced Econometric Methods:sample}
+\author{Student ID: Your Student ID\\Your Name}
+\date{}
+
+\newcommand{\resultfile}[2]{%
+  \IfFileExists{#1}{\input{#1}}{\fbox{\parbox{0.9\linewidth}{#2}}}%
+}
+
+\begin{document}
+\maketitle
+
+% Rename, duplicate, add, or remove sections to match the current assignment.
+\section*{[Question number and short title]}
+Answer the question directly. Explain the direction, magnitude, and substantive meaning of the main result.
+
+\begin{table}[H]
+  \centering
+  \caption{[Descriptive table title]}
+  \label{tab:main}
+  \resultfile{tables/table_main.tex}{Run analysis.R to create tables/table\_main.tex.}
+\end{table}
+
+\section*{[Next question number and short title]}
+Answer and interpretation: ...
+
+\begin{figure}[H]
+  \centering
+  \IfFileExists{figures/figure_main.pdf}
+    {\includegraphics[width=0.75\textwidth]{figures/figure_main.pdf}}
+    {\fbox{Run analysis.R to create figures/figure\_main.pdf.}}
+  \caption{[Descriptive figure title; include units or a note if needed]}
+  \label{fig:main}
+\end{figure}
+
+% Continue by copying the section pattern as many times as needed.
+
+\end{document}

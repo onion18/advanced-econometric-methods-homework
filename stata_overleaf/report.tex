@@ -1,0 +1,50 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{float}
+
+\title{Advanced Econometric Methods:sample}
+\author{Student ID: Your Student ID\\Your Name}
+\date{}
+
+% Keep the template compilable before Stata output exists.
+\newcommand{\resultfile}[2]{%
+  \IfFileExists{#1}{\input{#1}}{\fbox{\parbox{0.9\linewidth}{#2}}}%
+}
+
+\begin{document}
+\maketitle
+
+% Rename every section to match the current assignment.
+% Add or remove sections when the number of questions changes.
+
+\section*{[Question number and short title]}
+Answer the question directly. Then present the requested result and explain its direction, magnitude, and substantive meaning.
+
+% Example of a code-generated table. Change or remove as needed.
+\begin{table}[H]
+  \centering
+  \caption{[Descriptive table title]}
+  \label{tab:main}
+  \resultfile{tables/table_main.tex}{Run the Stata code that creates tables/table\_main.tex.}
+\end{table}
+The main result is ...
+
+\section*{[Next question number and short title]}
+Answer and interpretation: ...
+
+% Example of a code-generated figure. Change or remove as needed.
+\begin{figure}[H]
+  \centering
+  \IfFileExists{figures/figure_main.pdf}
+    {\includegraphics[width=0.75\textwidth]{figures/figure_main.pdf}}
+    {\fbox{Run the Stata code that creates figures/figure\_main.pdf.}}
+  \caption{[Descriptive figure title; include units or a note if needed]}
+  \label{fig:main}
+\end{figure}
+Figure~\ref{fig:main} shows ...
+
+% Continue by copying the section pattern as many times as needed.
+
+\end{document}

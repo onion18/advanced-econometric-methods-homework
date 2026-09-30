@@ -1,0 +1,36 @@
+---
+title: "Advanced Econometric Methods:sample"
+author: ""
+date: "`r Sys.Date()`"
+output: pdf_document
+header-includes:
+  - '\AtBeginDocument{\author{Student ID: Your Student ID\\Your Name}}'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+# [Question number and short title]
+
+Answer the question directly. Show the requested code-generated table, figure, or numerical result.
+
+```{r}
+# Code required for this question
+# For a ggplot figure, use labs() to provide reader-friendly labels:
+# + labs(title = "...", x = "Years of education", y = "Hourly wage (US dollars)")
+```
+
+Brief interpretation: Explain the direction, magnitude, and substantive meaning of the result.
+
+# [Next question number and short title]
+
+```{r}
+# Code required for this question
+```
+
+Brief interpretation: ...
+
+<!-- Copy the question block above as many times as needed. Match the numbering
+and order used in the current assignment. Use descriptive table and figure
+titles, variable labels, axis labels, units, legends, captions, and notes. -->
