@@ -22,7 +22,7 @@
 | [Stata memo](https://sites.google.com/site/matsuuratoshiyuki/japanese-top/text-book/stata-memo?authuser=0) | 日本語でStataのコマンドや操作を確認したい人 | 特定のStata操作やコマンドを調べたいときの補助資料として使います。 |
 | [Applied Econometrics in Stata](https://jackblun.github.io/metricsinstata/) | Stataやプログラミングが初めての人 | Stataの導入、データ確認・整形、グラフ、ランダム化実験とt検定を、チュートリアル順に練習したいとき。 |
 | [Producing Tables with estout](https://jdavidm.github.io/learn-stata/materials/10-estout/) | Stataで推定結果の表を作る人 | `estout`を使って回帰結果などを表として出力したいとき。 |
-| [Stata putpdf reference](https://www.stata.com/manuals/pputpdf.pdf) | StataからレポートPDFを作る人 | `putpdf`コマンドの機能や書式を確認したいとき。スターターキットの`stata_putpdf`ルートで使います。 |
+| [Stata putpdf reference](https://grodri.github.io/markstat/putpdf) | StataからレポートPDFを作る人 | `putpdf`コマンドの機能や書式を確認したいとき。スターターキットの`stata_putpdf`ルートで使います。 |
 
 ### Overleafでレポートを書く人
 

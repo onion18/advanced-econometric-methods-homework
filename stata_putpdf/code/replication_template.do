@@ -1,7 +1,20 @@
 version 18.0
+* This file lives in code/. Move to the project root before writing output/.
+capture confirm file "code/replication_template.do"
+if _rc {
+    local dofile "`c(filename)'"
+    if "`dofile'" != "" {
+        mata: st_local("dofile", pathresolve(pwd(), st_local("dofile")))
+        mata: st_local("root", pathgetparent(pathgetparent(st_local("dofile"))))
+        cd "`root'"
+    }
+}
 clear all
 set more off
 set varabbrev off
+
+capture mkdir "output"
+capture mkdir "output/figures"
 
 * ------------------------------------------------------------
 * Replication assignment template: Stata -> PDF directly
@@ -32,7 +45,7 @@ twoway (scatter price mpg) (lfit price mpg), ///
     xtitle("Fuel economy (miles per gallon)") ///
     ytitle("Vehicle price (US dollars)") ///
     legend(order(1 "Observed" 2 "Linear fit"))
-graph export "figure1.png", width(1600) replace
+graph export "output/figures/figure1.png", width(1600) replace
 
 * Build the English report
 capture putpdf clear
@@ -51,7 +64,7 @@ putpdf paragraph
 putpdf text ("Answer the question directly. Explain the direction, magnitude, and substantive meaning of the main result.")
 
 putpdf paragraph, halign(center)
-putpdf image "figure1.png", width(5)
+putpdf image "output/figures/figure1.png", width(5)
 putpdf paragraph, halign(center)
 putpdf text ("Figure 1. Vehicle price and fuel economy")
 
@@ -70,4 +83,4 @@ putpdf text ("Brief interpretation: ...")
 * Copy the question paragraphs above as many times as needed. Follow the
 * numbering and order used in the current assignment.
 
-putpdf save "replication_report.pdf", replace
+putpdf save "output/replication_report.pdf", replace

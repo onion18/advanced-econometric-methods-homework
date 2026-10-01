@@ -1,5 +1,7 @@
 # Filled template examples
 
+These folders are finished samples. For your assignment, copy one blank route folder: `r_quarto/`, `r_markdown/`, `r_overleaf/`, `stata_overleaf/`, or `stata_putpdf/`. Do not edit these samples.
+
 Each folder is a self-contained project. Run it with that folder as the working directory.
 
 ```text

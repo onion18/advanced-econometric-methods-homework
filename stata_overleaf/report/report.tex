@@ -27,7 +27,7 @@ Answer the question directly. Then present the requested result and explain its 
   \centering
   \caption{[Descriptive table title]}
   \label{tab:main}
-  \resultfile{tables/table_main.tex}{Run the Stata code that creates tables/table\_main.tex.}
+  \resultfile{../output/tables/table_main.tex}{Run code/analysis.do to create output/tables/table\_main.tex.}
 \end{table}
 The main result is ...
 
@@ -37,9 +37,9 @@ Answer and interpretation: ...
 % Example of a code-generated figure. Change or remove as needed.
 \begin{figure}[H]
   \centering
-  \IfFileExists{figures/figure_main.pdf}
-    {\includegraphics[width=0.75\textwidth]{figures/figure_main.pdf}}
-    {\fbox{Run the Stata code that creates figures/figure\_main.pdf.}}
+  \IfFileExists{../output/figures/figure_main.pdf}
+    {\includegraphics[width=0.75\textwidth]{../output/figures/figure_main.pdf}}
+    {\fbox{Run code/analysis.do to create output/figures/figure\_main.pdf.}}
   \caption{[Descriptive figure title; include units or a note if needed]}
   \label{fig:main}
 \end{figure}

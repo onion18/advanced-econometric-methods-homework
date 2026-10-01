@@ -1,7 +1,11 @@
 # R -> LaTeX tables and PDF figures -> Overleaf
+# This file lives in code/. Run it from the project root, or source it from code/.
 
-dir.create("tables", showWarnings = FALSE)
-dir.create("figures", showWarnings = FALSE)
+if (!dir.exists("report") && file.exists("../report/report.tex")) {
+  setwd("..")
+}
+dir.create("output/tables", recursive = TRUE, showWarnings = FALSE)
+dir.create("output/figures", recursive = TRUE, showWarnings = FALSE)
 
 # Open the file supplied for the current assignment here.
 # Replace the example variable names and specification below.
@@ -17,10 +21,10 @@ dir.create("figures", showWarnings = FALSE)
 #   booktabs = TRUE,
 #   digits = 3
 # )
-# writeLines(table_tex, "tables/table_main.tex")
+# writeLines(table_tex, "output/tables/table_main.tex")
 
 # Example PDF figure:
-# pdf("figures/figure_main.pdf", width = 6.5, height = 4.5)
+# pdf("output/figures/figure_main.pdf", width = 6.5, height = 4.5)
 # plot(dat$x1, dat$y,
 #      xlab = "Years of education",
 #      ylab = "Hourly wage (US dollars)",

@@ -1,10 +1,21 @@
 version 18.0
+* This file lives in code/. Move to the project root before reading data/ or writing output/.
+capture confirm file "report/report.tex"
+if _rc {
+    local dofile "`c(filename)'"
+    if "`dofile'" != "" {
+        mata: st_local("dofile", pathresolve(pwd(), st_local("dofile")))
+        mata: st_local("root", pathgetparent(pathgetparent(st_local("dofile"))))
+        cd "`root'"
+    }
+}
 clear all
 set more off
 set varabbrev off
 
-capture mkdir "tables"
-capture mkdir "figures"
+capture mkdir "output"
+capture mkdir "output/tables"
+capture mkdir "output/figures"
 capture mkdir "ado"
 adopath ++ "ado"
 
@@ -26,10 +37,10 @@ adopath ++ "ado"
 *     xtitle("Years of education") ///
 *     ytitle("Hourly wage (US dollars)") ///
 *     title("Education and hourly wages")
-* graph export "figures/figure_main.pdf", replace
+* graph export "output/figures/figure_main.pdf", replace
 
 * esttab coefficient-label example:
-* esttab model1 model2 using "tables/table_main.tex", replace ///
+* esttab model1 model2 using "output/tables/table_main.tex", replace ///
 *     coeflabels(educ "Years of education" ///
 *                treatpost "Treatment x Post") ///
 *     b(3) se(3) booktabs

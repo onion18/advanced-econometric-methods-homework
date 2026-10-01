@@ -15,7 +15,14 @@ execute:
 
 ```{r}
 #| include: false
-# Setup: load packages and define any common options here.
+# This file lives in report/. Paths such as data/ and output/ start at the project root.
+candidates <- c("..", ".")
+root <- candidates[dir.exists(file.path(candidates, "data")) &
+                     dir.exists(file.path(candidates, "report"))][1]
+if (is.na(root)) {
+  stop("Open this file from the route folder that contains data/ and report/.")
+}
+knitr::opts_knit$set(root.dir = normalizePath(root))
 ```
 
 # [Question number and short title]
